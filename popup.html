@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="popup.js"></script>
+	<style type="text/css">
+		* {
+			font-family: "Segoe UI";
+			font-size: 14px;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			width: 300px;
+			height: 150px;
+			padding: 3px;
+		}
+		.title {
+			font-weight: bold;
+		}
+		.row {
+			height: 30px;
+			line-height: 30px;
+			margin-bottom: 
+		}
+		.row label {
+			display: inline-block;
+			width: 60px;
+			height: 30px;
+		}
+		.row input {
+			width: 190px;
+			vertical-align: middle;
+		}
+		.row select {
+			width: 230px;
+			vertical-align: middle;
+		}
+		.row span {
+		}
+		.row .current {
+			display: inline-block;
+			width: 35px;
+		}
+		#save {
+			position: absolute;
+			top: 3px;
+			right: 3px;
+			width: 230px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="title">Settings:</div>
+	<button id="save">Save</button>
+	<div class="settings">
+		<div class="row">
+			<label>Voice:</label>
+			<select id="voices"></select>
+		</div>
+		<div class="row">
+			<label>Volume:</label>
+			<input id="volume" type="range" min="0" max="100"/>
+			<span id="currentVolume" class="current"></span>
+		</div>
+		<div class="row">
+			<label>Rate:</label>
+			<input id="rate" type="range" min="1" max="200"/>
+			<span id="currentRate" class="current"></span>
+		</div>
+		<div class="row">
+			<label>Pitch:</label>
+			<input id="pitch" type="range" min="1" max="200"/>
+			<span id="currentPitch" class="current"></span>
+		</div>
+	</div>
+</body>
+</html>
