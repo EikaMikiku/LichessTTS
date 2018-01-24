@@ -32,6 +32,12 @@
 			width: 190px;
 			vertical-align: middle;
 		}
+		.tokens .row input {
+			width: 210px;
+		}
+		.tokens .row label {
+			width: 80px;
+		}
 		.row select {
 			width: 230px;
 			vertical-align: middle;
@@ -46,13 +52,13 @@
 			position: absolute;
 			top: 3px;
 			right: 3px;
-			width: 230px;
+			width: 190px;
 			display: none;
 		}
 	</style>
 </head>
 <body>
-	<div class="title">Settings:</div>
+	<div class="title">Voice settings:</div>
 	<button id="save">Save</button>
 	<div class="settings">
 		<div class="row">
@@ -73,6 +79,61 @@
 			<label>Pitch:</label>
 			<input id="pitch" type="range" min="1" max="200"/>
 			<span id="currentPitch" class="current"></span>
+		</div>
+	</div>
+	<div class="title">Speech tokens:</div>
+	<div class="tokens">
+		<div class="row">
+			<label>Knight:</label>
+			<input id="tokenKnight" type="text" value="Knight"/>
+		</div>
+		<div class="row">
+			<label>Bishop:</label>
+			<input id="tokenBishop" type="text" value="Bishop"/>
+		</div>
+		<div class="row">
+			<label>Rook:</label>
+			<input id="tokenRook" type="text" value="Rook"/>
+		</div>
+		<div class="row">
+			<label>Queen:</label>
+			<input id="tokenQueen" type="text" value="Queen"/>
+		</div>
+		<div class="row">
+			<label>King:</label>
+			<input id="tokenKing" type="text" value="King"/>
+		</div>
+		<div class="row">
+			<label>Takes:</label>
+			<input id="tokenTakes" type="text" value="Takes"/>
+		</div>
+		<div class="row">
+			<label>Check:</label>
+			<input id="tokenCheck" type="text" value="Check"/>
+		</div>
+		<div class="row">
+			<label>Checkmate:</label>
+			<input id="tokenCheckmate" type="text" value="Check mate"/>
+		</div>
+		<div class="row">
+			<label>O-O:</label>
+			<input id="tokenOO" type="text" value="Kingside castle"/>
+		</div>
+		<div class="row">
+			<label>O-O-O:</label>
+			<input id="tokenOOO" type="text" value="Queenside castle"/>
+		</div>
+		<div class="row">
+			<label>Promotion:</label>
+			<input id="tokenPromo" type="text" value="Promotion to"/>
+		</div>
+		<div class="row">
+			<label>Files:</label>
+			<input id="tokenFiles" type="text" value="A,B,C,D,E,F,G,H"/>
+		</div>
+		<div class="row">
+			<label>Ranks:</label>
+			<input id="tokenRanks" type="text" value="one,two,three,four,five,six,seven,eight"/>
 		</div>
 	</div>
 </body>
