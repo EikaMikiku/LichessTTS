@@ -39,31 +39,31 @@
 
 	function start() {
 		setInterval(getSettings, 1000);
-		setInterval(checkNewMove, 20);
+		setInterval(checkNewMove);
 	}
 
 	function checkNewMove() {
-		let currentMoveActive = document.querySelector("move.active");
-		if(!currentMoveActive) return;
-		let parent = currentMoveActive.parentNode;
+		let currentMoveActiveAnalysis = document.querySelector("move.active");
+		let currentMoveActiveGame = document.querySelector(".moves .active");
+
+		if(!currentMoveActiveAnalysis && !currentMoveActiveGame) return;
+
 		let text = null;
 
-		if(parent.classList.contains("moves")) {
-			text = currentMoveActive.textContent;
-		} else if(parent.classList.contains("inline") || parent.tagName === "LINE" || parent.tagName === "INLINE") {
-			text = currentMoveActive.textContent.replace(/^.*\./g, "");
-		} else {
-			let san = currentMoveActive.getElementsByTagName("san")[0];
+		if(currentMoveActiveGame) {
+			text = currentMoveActiveGame.innerText.trim();
+		} else if(currentMoveActiveAnalysis) {
+			// Can be inline, which can add move index to inner text, which we need to remove
+			let san = currentMoveActiveAnalysis.getElementsByTagName("san")[0];
 			if(san) {
-				text = san.textContent;
+				text = san.innerText.trim();
 			} else {
-				text = currentMoveActive.textContent;
+				//Inline view, or sub-line
+				text = currentMoveActiveAnalysis.innerText.replace(/^.*\./g, "");
 			}
 		}
-		if(!text) {
-			return "Move history is invalid";
-		}
 
+		let currentMoveActive = currentMoveActiveGame || currentMoveActiveAnalysis;
 		if(oldMoveActive !== currentMoveActive) {
 			oldMoveActive = currentMoveActive;
 			parseMove(regexp.exec(text))
