@@ -1,5 +1,5 @@
 (() => {
-	let regexp = /((([NBRQK][a-h]?[0-9]?)[\u0445x]([a-h][0-9]))|(([NBRQK]?[a-h]?[0-9]?)([a-h][0-9]))|([a-h])[\u0445x]([a-h][0-9])|(O-O-O)|(O-O))(=[NBRQ])?([+#])?/;
+	let regexp = /((([NBRQK][a-h]?[1-8]?)[\u0445x]([a-h][1-8]))|(([NBRQK]?[a-h]?[1-8]?)([a-h][1-8]))|([a-h])[\u0445x]([a-h][1-8])|(O-O-O)|(O-O))(=[NBRQ])?([+#])?/;
 	let oldMoveActive = null;
 	let synth = window.speechSynthesis;
 	let settings = {};
@@ -106,7 +106,7 @@
 			text += tokeniseSquare(nonTakeSquare.toUpperCase());
 		}
 		if(pawnTakes && pawnTakes.length > 0) {
-			text += pawnTakes.toUpperCase() + " " + settings.tokens.takes + " ";
+			text += tokeniseFile(pawnTakes.toUpperCase()) + " " + settings.tokens.takes + " ";
 		}
 		if(pawnTakesSquare && pawnTakesSquare.length > 0) {
 			text += tokeniseSquare(pawnTakesSquare.toUpperCase());
@@ -141,6 +141,15 @@
 		console.log(text);
 	}
 
+	function tokeniseFile(file) {
+		let idx = file.toLowerCase().charCodeAt(0) - 97; //97 = a
+		return settings.tokens.files.split(",")[idx];
+	}
+
+	function tokeniseRank(rank) {
+		return settings.tokens.ranks.split(",")[parseInt(rank) - 1];
+	}
+
 	function tokeniseSquare(text) {
 		let file = null;
 		let rank = null;
@@ -157,8 +166,7 @@
 		}
 		if(file) {
 			output += file.replace(/([\w])/g, (a, b) => {
-				let idx = b.toLowerCase().charCodeAt(0) - 97; //97 = a
-				return settings.tokens.files.split(",")[idx];
+				return tokeniseFile(b);
 			});
 		}
 		if(output.length > 0) {
@@ -166,7 +174,7 @@
 		}
 		if(rank) {
 			output += rank.replace(/([\d])/g, (a, b) => {
-				return settings.tokens.ranks.split(",")[parseInt(b) - 1];
+				return tokeniseRank(b);
 			});
 		}
 
