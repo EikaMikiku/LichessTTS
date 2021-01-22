@@ -44,7 +44,7 @@
 
 	function checkNewMove() {
 		let currentMoveActiveAnalysis = document.querySelector("move.active");
-		let currentMoveActiveGame = document.querySelector(".moves .active");
+		let currentMoveActiveGame = document.querySelector("l4x > u8t.a1t");
 
 		if(!currentMoveActiveAnalysis && !currentMoveActiveGame) return;
 
