@@ -3,7 +3,7 @@
 	"name": "Lichess Text To Speech",
 	"short_name": "Lichess TTS",
 	"author": "Eika Mikiku",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "Uses text to speech to pronounce moves played on Lichess",
 	"content_scripts": [{
 		"run_at" :"document_end",
